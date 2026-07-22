@@ -4,6 +4,77 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Brand tokens */
+:root {
+  --ivory: #f5f0e8;
+  --ivory-dark: #ede7d9;
+  --charcoal: #1a1a18;
+  --charcoal-mid: #2c2c28;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --warm-gray: #8a8478;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-ivory-dark: var(--ivory-dark);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-mid: var(--charcoal-mid);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-warm-gray: var(--warm-gray);
+  --font-display: "Bebas Neue", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(0,-14px); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.8s ease-out both; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+.font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+.font-serif-i { font-family: var(--font-serif); font-style: italic; }
+
+.btn-gold-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-gold-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 0.5s ease;
+  z-index: -1;
+}
+.btn-gold-sweep:hover::before { transform: translateX(0); }
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(201, 168, 76, 0.35);
+  color: transparent;
+}
+
 /*
  * Design system definition.
  *
