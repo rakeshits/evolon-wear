@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { getProduct, products } from "@/lib/products";
+import type { Product } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 import { Heart, Star, Plus, Minus, Leaf, Sparkles, Recycle, Ruler, Check } from "lucide-react";
 
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/product/$id")({
 });
 
 function ProductPage() {
-  const product = Route.useLoaderData();
+  const product = Route.useLoaderData() as Product;
   const [img, setImg] = useState(0);
   const [color, setColor] = useState(product.colors[0].name);
   const [size, setSize] = useState<string | null>(null);
